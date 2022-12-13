@@ -1,0 +1,4 @@
+node_modules
+root/.gitignore
+root/package-lock.json
+root/backend/package-lock.json
