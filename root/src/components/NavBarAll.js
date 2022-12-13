@@ -6,22 +6,22 @@ import {logoutUser} from '../redux/actions/userAction';
 import {connect} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-//https://react-bootstrap.github.io/components/navbar/
+//https://react-bootstrap.github.io/components/navbar/ + https://stackoverflow.com/a/72184830
 
 const Header = ({user , logoutUser}) => {
   const history = useHistory();
     return (
         <header className="App-header">
-          <Navbar bg="black" variant="dark" collapseOnSelect expand='sm'>
+          <Navbar variant="dark" collapseOnSelect expand='sm' style={{backgroundColor:'#a28089'}}>
             <Container fluid>
-              <Navbar.Brand>MERNLibrary
+              <Navbar.Brand style={{marginBottom: '5x', fontFamily: 'verdana, sans serif', paddingRight:'20px', paddingLeft:'4px'}}>MERNLibrary
                 <Link to = '/'  className="nav-link">
                   Home
                   </Link>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav" className='mx-auto'>
-                <NavDropdown title="Quick Links" id="basic-nav-dropdown" className='mx-left'style={{color:'white'}}>
+              <Navbar.Collapse id="basic-navbar-nav" className='mx-auto' style={{paddingTop: '32px'}}>
+                <NavDropdown title="Quick Links" id="basic-nav-dropdown" className='mx-left'style={{color:'white', fontSize:'large'}}>
               <NavDropdown.Item >
                 <Link to={'/signin'} className="nav-link">Membership</Link>              
               </NavDropdown.Item>
@@ -38,7 +38,7 @@ const Header = ({user , logoutUser}) => {
               //Some links should be shown based on user's authentication status 
               !user.isAuthenticated ?
               //Case that user is not authenticated/logged out (PUBLIC)
-                <Nav className="justify-content-end" style={{fontSize: 'larger', fontFamily: 'helvetica, sans-serif'}}>
+                <Nav className="justify-content-end" style={{fontSize: 'larger', fontFamily: 'verdana, sans-serif', color:'white'}}>
                   <Nav>
                     <Link to={'/signin'} className="nav-link">
                       Sign-In
