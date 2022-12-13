@@ -27,14 +27,20 @@ let UserSchema = new Schema({
 
 let User = mongoose.model('User', UserSchema);
 
-bcrypt.genSalt(10 , (err , salt) => {
+//https://heynode.com/blog/2020-04/salt-and-hash-passwords-bcrypt/ + https://www.npmjs.com/package/bcrypt
+const saltRounds = 10;
+//Initialize two users, 1 admin type and 1 regular type
+bcrypt.genSalt(saltRounds, (err , salt) => {
   if(err) throw err;
-  User.findOne({email: 'admin@gmail.com'} , (err , docs) => {
-    if(err) throw err
-    if(!docs){
 
+  User.findOne({email: 'admin@gmail.com'}, (err , docs) => {
+    if(err) throw err;
+
+    if(!docs){
+        //Salt and hash password, store it in collection
         bcrypt.hash('admin' , salt , (err , hash) => {
           if(err) throw err;
+          //Create an admin account 
           const adminUser = new User({
             name: 'admin',
             email: 'admin@gmail.com',
@@ -42,8 +48,28 @@ bcrypt.genSalt(10 , (err , salt) => {
             roll: 'admin'
           });
           adminUser.save();
+          console.log("Stored!");
         })
 
+    }
+  })
+
+  User.findOne({email: 'regular1@gmail.com'} , (err , docs) => {
+    if(err) throw err
+    if(!docs){
+      //Salt and hash password, store it in collection
+        bcrypt.hash('reg123' , salt , (err , hash) => {
+          if(err) throw err;
+          //Create a regular account 
+          const regUser = new User({
+            name: 'regularUser1',
+            email: 'regular1@gmail.com',
+            password: hash,
+            roll: 'member'
+          });
+          regUser.save();
+          console.log("Stored!");
+        })
     }
   })
 })

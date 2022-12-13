@@ -1,21 +1,20 @@
-let mongoose = require('mongoose'),
-  express = require('express'),
-  router = express.Router()
-
-
+express = require('express');
+router = express.Router();
 const bcrypt = require('bcryptjs');
 
 // Student Model
 let User = require('../models/User');
 
 
-// CREATE Student
+
 router.route('/allOthers').get((req , res , next) => {
   User.find({roll: 'normal'} , (err , others) => {
       if(err) throw err;
       res.status(200).json({others})
   });
 });
+
+// CREATE Student
 router.route('/register').post((req , res , next) => {
     User.findOne({email: req.body.email} , (err , docs) => {
       if(err) throw err;
@@ -41,6 +40,8 @@ router.route('/register').post((req , res , next) => {
       })
     })
 });
+
+
 router.route('/signin').post((req , res , next) => {
     User.findOne({email: req.body.email} , (err , data) => {
         if(err) throw err;

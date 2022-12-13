@@ -10,7 +10,7 @@ const UserRoute = require('../backend/routes/user.route');
 const BookRoute = require('../backend/routes/book.route');
 //Inspiration: https://www.section.io/engineering-education/nodejs-mongoosejs-mongodb/
 const LocalMongoURI = 'mongodb://127.0.0.1:27017/mydatabase';
-const AtlasURI      = 'mongodb+srv://adminAll:FyJwRDDykhRfxcse@librarycluster.vgreoc9.mongodb.net/testLibraryDBv2';
+const AtlasURI      = 'mongodb+srv://adminAll:FyJwRDDykhRfxcse@librarycluster.vgreoc9.mongodb.net/testLibraryDBv3';
 //Both databases are the same
 
 // Connecting mongoDB Database (https://mongoosejs.com/docs/connections.html)
@@ -26,6 +26,7 @@ mongoose
 */
  
 mongoose.connect(AtlasURI,  { useNewUrlParser: true, useUnifiedTopology: true }).then((x) => {
+  //NOTE: database will be created if one with the name is not found!
     console.log(`Connected to Mongo Atlas cluster! Database name: "${x.connections[0].name}"`)
   })
   .catch((err) => {
