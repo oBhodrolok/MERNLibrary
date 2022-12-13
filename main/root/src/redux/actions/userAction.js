@@ -12,7 +12,6 @@ export const signinUser = (data , history) => dispatch => {
                 window.localStorage.setItem('password' , res.data.user.password)
                 window.localStorage.setItem('roll' , res.data.user.roll)
 
-
                 dispatch({type: LOGIN , payload: res.data.user})
                 history.push('/profile');
             }
