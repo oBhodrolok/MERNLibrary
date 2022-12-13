@@ -38,7 +38,7 @@ function App() {
                   {/* Signup/Login pages (public) */}
                   <Route exact path="/register" component={Register}/>
                   <Route exact path="/signin" component={Signin}/>
-                    {/*Admin management page (private)  */}
+                    {/*Admin management page (user+books) (private)  */}
                   <Route exact path="/manage" component={Manage} />
                   
                   <Route exact path="/update/:id" component={Update} />
