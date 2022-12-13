@@ -2,6 +2,8 @@ let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
+const createError = require('http-errors');
+
 
 // Express Route
 const UserRoute = require('../backend/routes/user.route');
@@ -50,8 +52,9 @@ const server = app.listen(port, () => {
   console.log('Backend is now live at port: ' + port)
 })
 
-// 404 Error handling (middleware)
+//404 Error handling
 app.use((req, res, next) => {
+  //404 not found!
   next(createError(404));
 });
 
