@@ -39,5 +39,5 @@ export const logoutUser = (history) => dispatch => {
             window.localStorage.removeItem('password' )
             window.localStorage.removeItem('roll')
             dispatch({type: LOGOUT})
-            history.push('/home');
+            history.push('/');
 }

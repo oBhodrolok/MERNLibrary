@@ -4,30 +4,36 @@ import { connect } from 'react-redux';
 import { createBook } from '../redux/actions/bookAction';
 import {useHistory, useParams} from 'react-router-dom';
 
-const Create = ({book , createBook}) => {
-    const [title , setTitle] = React.useState('');
-    const [author , setAuthor] = React.useState('');
-    const [description , setDescription] = React.useState('');
+const CreateNewBook = ({book , createBook}) => {
+    const [title, setTitle] = React.useState('');
+    const [authors, setAuthor] = React.useState('');
+    const [description, setDescription] = React.useState('');
+    
     const history = useHistory();
+    
     return (
         <div>
-            <h2 className='text-center my-5'>Create Book</h2>
+            <h2 className='text-center my-5'>Add a new Book to the library!</h2>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Title</Form.Label>
+                    <Form.Label>Title:</Form.Label>
                     <Form.Control type="text" value={title} onChange = {(e) => setTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Author</Form.Label>
-                    <Form.Control type="text" value={author} onChange = {(e) => setAuthor(e.target.value)}/>
+                    <Form.Label>Author(s):</Form.Label>
+                    <Form.Control type="text" value={authors} onChange = {(e) => setAuthor(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label>Brief description:</Form.Label>
                     <Form.Control type="text" value={description} onChange = {(e) => setDescription(e.target.value)}/>
                 </Form.Group>
+
                 <div className='text-center'>
-                    <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault();createBook({title , author , description} , history)}}>
-                        Create
+                    <Button variant="primary" type="submit" onClick={(e) => {
+                        e.preventDefault();
+                        createBook({title , authors , description}, 
+                        history)}}>
+                    Add to the collection
                     </Button>
                 </div>
             </Form>
@@ -39,4 +45,4 @@ const mapStateToProps = state => ({
     book: state.book
 });
 
-export default connect(mapStateToProps , {createBook})(Create);
+export default connect(mapStateToProps, {createBook}) (CreateNewBook);
