@@ -5,6 +5,7 @@ export const signinUser = (data , history) => dispatch => {
     axios.post('http://localhost:4000/user/signin' , {...data})
         .then(res => {
             if (res.data.isAuthenticated){
+                //Local memory
                 window.localStorage.setItem('isAuthenticated' , res.data.isAuthenticated)
                 window.localStorage.setItem('_id' , res.data.user._id)
                 window.localStorage.setItem('name' , res.data.user.name)
@@ -19,19 +20,18 @@ export const signinUser = (data , history) => dispatch => {
         .catch(err => console.log(err));
 }
 
-export const registerUser = (data , history) => dispatch => {
-    axios.post('http://localhost:4000/user/register' , {...data})
+export const registerUser = (data , history) => 
+    dispatch => {
+        axios.post('http://localhost:4000/user/register' , {...data})
         .then(res => {
+            //If register is successful, navigate to signin page
             history.push('/signin');
-            // }
         })
         .catch(err => console.log(err));
 }
 
 
 export const logoutUser = (history) => dispatch => {
-    // axios.post('http://localhost:4000/user/register' , {...data})
-    //     .then(res => {
             window.localStorage.removeItem('isAuthenticated')
             window.localStorage.removeItem('_id')
             window.localStorage.removeItem('name')
@@ -39,8 +39,5 @@ export const logoutUser = (history) => dispatch => {
             window.localStorage.removeItem('password' )
             window.localStorage.removeItem('roll')
             dispatch({type: LOGOUT})
-            history.push('/signin');
-            // }
-        // })
-        // .catch(err => console.log(err));
+            history.push('/home');
 }
