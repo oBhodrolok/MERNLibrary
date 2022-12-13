@@ -7,7 +7,7 @@ import {useHistory} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import { addFav, delFav } from '../redux/actions/userAction';
 
-const Home = ({
+const HomePaginated = ({
     book,
     user,
     allBook,
@@ -106,4 +106,4 @@ const mapStateToProps = state => ({
     book: state.book
 });
 
-export default connect(mapStateToProps , {allBook , deleteBook , delFav , addFav})(Home);
+export default connect(mapStateToProps , {allBook , deleteBook , delFav , addFav})(HomePaginated);
