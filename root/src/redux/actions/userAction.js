@@ -1,7 +1,7 @@
 import axios from "axios"
 import { SET_ERROR, LOGIN, LOGOUT, CLEAR_ERROR, SET_OTHERS , UPDATE_USER , DELETE_USER, ADD_FAV, DELETE_FAV } from "./type";
 
-export const signinUser = (data , history) => dispatch => {
+export const signinUser = (data , navigate) => dispatch => {
     dispatch({type:CLEAR_ERROR})
     axios.post('http://localhost:4000/user/signin' , {...data})
         .then(res => {
@@ -17,7 +17,7 @@ export const signinUser = (data , history) => dispatch => {
 
                 console.log('sss');
                 dispatch({type: LOGIN , payload: res.data.user})
-                history.push('/profile');
+                navigate('/profile');
             // }
         })
         .catch(err => {
@@ -25,11 +25,11 @@ export const signinUser = (data , history) => dispatch => {
         });
 }
 
-export const registerUser = (data , history) => dispatch => {
+export const registerUser = (data , navigate) => dispatch => {
     dispatch({type:CLEAR_ERROR})
     axios.post('http://localhost:4000/user/register' , {...data})
         .then(res => {
-            history.push('/signin');
+            navigate('/signin');
             // }
         })
         .catch(err => {
@@ -50,7 +50,7 @@ export const allOthers = () => dispatch => {
 }
 
 
-export const logoutUser = (history) => dispatch => {
+export const logoutUser = (navigate) => dispatch => {
     // axios.post('http://localhost:4000/user/register' , {...data})
     //     .then(res => {
             window.localStorage.removeItem('isAuthenticated')
@@ -61,19 +61,19 @@ export const logoutUser = (history) => dispatch => {
             window.localStorage.removeItem('roll')
             window.localStorage.removeItem('favourites')
             dispatch({type: LOGOUT})
-            history.push('/signin');
+            navigate.push('/signin');
             // }
         // })
         // .catch(err => console.log(err));
 }
 
 
-export const updateUser = (data , history) => dispatch => {
+export const updateUser = (data , navigate) => dispatch => {
     dispatch({type:CLEAR_ERROR});
     axios.put(`http://localhost:4000/user/update-user/${data.id}` , {...data})
         .then(res => {
             dispatch({type: UPDATE_USER , payload: res.data})
-            history.push('/manage');
+            navigate.push('/manage');
             // }
         })
         .catch(err => {
@@ -81,35 +81,35 @@ export const updateUser = (data , history) => dispatch => {
         });
 }
 
-export const deleteUser = (data , history) => dispatch => {
+export const deleteUser = (data , navigate) => dispatch => {
     dispatch({type:CLEAR_ERROR});
     axios.delete(`http://localhost:4000/user/delete-user/${data.id}`)
     .then(res => {
             dispatch({type: DELETE_USER , payload: data})
-            history.push('/manage');
+            navigate.push('/manage');
         })
         .catch(err => {
             dispatch({type:SET_ERROR , payload: err.response.data})
         });
 }
 
-export const addFav = (data , history) => dispatch => {
+export const addFav = (data , navigate) => dispatch => {
     dispatch({type:CLEAR_ERROR});
     axios.post(`http://localhost:4000/user/add-fav` , {...data})
     .then(res => {
             dispatch({type: ADD_FAV , payload: data})
-            // history.push('/manage');
+            // navigate.push('/manage');
         })
         .catch(err => {
             dispatch({type:SET_ERROR , payload: err.response.data})
         });
 }
-export const delFav = (data , history) => dispatch => {
+export const delFav = (data , navigate) => dispatch => {
     dispatch({type:CLEAR_ERROR});
     axios.post(`http://localhost:4000/user/delete-fav` , {...data})
     .then(res => {
             dispatch({type: DELETE_FAV , payload: data})
-            // history.push('/manage');
+            // navigate.push('/manage');
         })
         .catch(err => {
             dispatch({type:SET_ERROR , payload: err.response.data})

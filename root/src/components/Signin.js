@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Button,Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { signinUser } from '../redux/actions/userAction';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Signin = ({signinUser , error}) => {
     const [email , setEmail] = React.useState('');
     const [password , setPassword] = React.useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
     return (
         <div style = {{ maxWidth: '500px' }} className = 'm-auto'>
             <h2 className='text-center my-5'>Sign in</h2>
@@ -28,7 +28,7 @@ const Signin = ({signinUser , error}) => {
                     </Form.Text>
                 </Form.Group>
                 <div className='text-center'>
-                    <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault(); signinUser({email , password} , history)}}>
+                    <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault(); signinUser({email , password} , navigate)}}>
                         Submit
                     </Button>
                 </div>

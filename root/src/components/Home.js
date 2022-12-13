@@ -3,7 +3,7 @@ import { Button, Col, Container, FormControl, Row , Table } from 'react-bootstra
 import {Bucket , BucketFill} from 'react-bootstrap-icons'
 import { connect } from 'react-redux';
 import {allBook, deleteBook} from '../redux/actions/bookAction'
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import { addFav, delFav } from '../redux/actions/userAction';
 
@@ -15,7 +15,7 @@ const Home = ({
     delFav,
     addFav
 }) => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [searchStr , setSearchStr] = React.useState('');
     const [_books , setBooks] = React.useState(book.books);
@@ -71,7 +71,7 @@ const Home = ({
                             </td>
 
                             <td style={{paddingTop:'19px'}}>
-                                <Button className = 'btn-primary text-white' onClick = {() => history.push(`/preview/${item._id}`)}>View book</Button>
+                                <Button className = 'btn-primary text-white' onClick = {() => navigate(`/preview/${item._id}`)}>View book</Button>
                             </td>
 
                             <td style={{paddingTop:'19px'}}>

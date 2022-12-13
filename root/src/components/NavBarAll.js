@@ -4,12 +4,12 @@ import {Navbar , Container , Nav, NavDropdown} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {logoutUser} from '../redux/actions/userAction';
 import {connect} from 'react-redux';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 //https://react-bootstrap.github.io/components/navbar/ + https://stackoverflow.com/a/72184830
 
 const Header = ({user , logoutUser}) => {
-  const history = useHistory();
+  const navigate = useNavigate();
     return (
         <header className="App-header">
           <Navbar variant="dark" collapseOnSelect expand='sm' style={{backgroundColor:'#a28089'}}>
@@ -54,7 +54,7 @@ const Header = ({user , logoutUser}) => {
                 //Case that the user is authenticated/logged in (PRIVATE)
                 <Nav className="justify-content-end">
                   <Nav>
-                    <Link to={'/signin'} className="nav-link" onClick={() =>logoutUser(history)}>
+                    <Link to={'/signin'} className="nav-link" onClick={() =>logoutUser(navigate)}>
                       Logout
                     </Link>
                     <Link to={'/profile'} className="nav-link">

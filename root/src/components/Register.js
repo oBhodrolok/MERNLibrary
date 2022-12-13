@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import * as React from 'react';
 import {Form , Button } from 'react-bootstrap';
 import {registerUser} from '../redux/actions/userAction';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Register = ({registerUser , user}) => {
     const [name , setName] = React.useState('')
@@ -10,7 +10,7 @@ const Register = ({registerUser , user}) => {
     const [password , setPassword] = React.useState('')
     const [roll , setRoll] = React.useState('normal')
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     return (
         <div style = {{ maxWidth: '500px' }} className = 'm-auto'>
@@ -45,7 +45,7 @@ const Register = ({registerUser , user}) => {
                     <Form.Control type="password" placeholder="Password" value = {password} onChange = {e => setPassword(e.target.value)}  />
                 </Form.Group>
                 <div className='text-center'>
-                    <Button variant="primary" type="submit" onClick = {e => {e.preventDefault(); registerUser({name , email , password} , history)}}>
+                    <Button variant="primary" type="submit" onClick = {e => {e.preventDefault(); registerUser({name , email , password} , navigate)}}>
                         Submit
                     </Button>
                 </div>

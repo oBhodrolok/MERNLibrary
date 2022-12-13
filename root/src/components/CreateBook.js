@@ -2,13 +2,13 @@ import * as React from 'react';
 import { Button,Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { createBook } from '../redux/actions/bookAction';
-import {useHistory, useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 const Create = ({book , createBook}) => {
     const [title , setTitle] = React.useState('');
     const [author , setAuthor] = React.useState('');
     const [description , setDescription] = React.useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
     return (
         <div>
             <h2 className='text-center my-5'>Add a new book entry to the library</h2>
@@ -26,7 +26,7 @@ const Create = ({book , createBook}) => {
                     <Form.Control type="text" value={description} onChange = {(e) => setDescription(e.target.value)}/>
                 </Form.Group>
                 <div className='text-center'>
-                    <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault();createBook({title , author , description} , history)}}>
+                    <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault();createBook({title , author , description} , navigate)}}>
                     Add to Collection!
                     </Button>
                 </div>

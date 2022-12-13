@@ -2,19 +2,19 @@ import * as React from 'react';
 import { Button,Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 // import { signinUser } from '../redux/actions/userAction';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { allBook } from '../redux/actions/bookAction';
 
 const Profile = ({user , book , allBook}) => {
     // const [email , setEmail] = React.useState('');
     // const [password , setPassword] = React.useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
     React.useEffect(() => {
         allBook();
     } ,[book])
     return (
         <div>
-            <Button onClick={() => history.push('/')} className='btn-secondary'>go to Library</Button>
+            <Button onClick={() => navigate('/')} className='btn-secondary'>go to Library</Button>
             <h2 className='text-center my-5'>My Profile</h2>
             <h4>name: {user.user.name}</h4>
             <h4>email: {user.user.email}</h4>

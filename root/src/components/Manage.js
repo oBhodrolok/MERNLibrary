@@ -3,7 +3,7 @@ import { Row , Col , Table , Button } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import { allBook , deleteBook } from '../redux/actions/bookAction';
 import { allOthers, deleteUser } from '../redux/actions/userAction';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Manage = ({
     book, user , allBook , deleteBook , allOthers , deleteUser
@@ -13,7 +13,7 @@ const Manage = ({
         allOthers();
     } , []);
 
-    const history = useHistory();
+    const navigate = useNavigate();
     return (
         <Row className = 'mt-5'>
             <Col md ={6}>
@@ -37,8 +37,8 @@ const Manage = ({
                                 <td>{item.name}</td>
                                 <td>{item.email}</td>
                                 <td>
-                                    <Button size='sm' className = 'btn-warning' onClick={() => history.push(`/user_update/${item._id}`)}>update</Button>
-                                    <Button size='sm' className = 'btn-danger' onClick={() => deleteUser({id: item._id} , history)}>delete</Button>
+                                    <Button size='sm' className = 'btn-warning' onClick={() => navigate(`/user_update/${item._id}`)}>update</Button>
+                                    <Button size='sm' className = 'btn-danger' onClick={() => deleteUser({id: item._id} , navigate)}>delete</Button>
                                 </td>
                             </tr>
                         ))}
@@ -48,7 +48,7 @@ const Manage = ({
             <Col md ={6}>
                 <h4 className='text-warning text-center'>Book Management</h4>
                 <div className = 'text-end my-3'>
-                    <Button className='btn-success' onClick={() => history.push('/create')}>NEW BOOK</Button>
+                    <Button className='btn-success' onClick={() => navigate('/create')}>NEW BOOK</Button>
                 </div>
                 <Table striped bordered hover>
                     <thead className='text-center'>
@@ -66,8 +66,8 @@ const Manage = ({
                                 <td>{item.title}</td>
                                 <td>{item.author}</td>
                                 <td>
-                                    <Button size='sm' className = 'btn-warning' onClick={() => history.push(`/update/${item._id}`)}>update</Button>
-                                    <Button size='sm' className = 'btn-danger' onClick={() => deleteBook({id: item._id} , history)}>delete</Button>
+                                    <Button size='sm' className = 'btn-warning' onClick={() => navigate(`/update/${item._id}`)}>update</Button>
+                                    <Button size='sm' className = 'btn-danger' onClick={() => deleteBook({id: item._id} , navigate)}>delete</Button>
                                 </td>
                             </tr>
                         ))}

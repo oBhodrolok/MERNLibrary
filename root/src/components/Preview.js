@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button,Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { updateBook , addComment, allBook } from '../redux/actions/bookAction';
-import {useHistory, useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 const Preview = ({book, user , updateBook , addComment , allBook}) => {
     const {id} = useParams();
@@ -11,7 +11,7 @@ const Preview = ({book, user , updateBook , addComment , allBook}) => {
     const [description , setDescription] = React.useState("");
     const [comments , setComments] = React.useState("");
     const [myComment , setMyComment] = React.useState("");
-    const history = useHistory();
+    const navigate = useNavigate();
 
     React.useEffect(() => {
         allBook();
@@ -60,7 +60,7 @@ const Preview = ({book, user , updateBook , addComment , allBook}) => {
                             <Form.Control type="text" value={myComment} onChange = {(e) => setMyComment(e.target.value)} disabled = {!user.isAuthenticated}/>
                         </Form.Group>
                         <div className='text-center'>
-                            <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault(); addComment({id , email:user.user.email , comment:myComment} , history) }} disabled = {!user.isAuthenticated}>
+                            <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault(); addComment({id , email:user.user.email , comment:myComment} , navigate) }} disabled = {!user.isAuthenticated}>
                                 Leave Comment
                             </Button>
                         </div>

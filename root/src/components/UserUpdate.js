@@ -2,13 +2,13 @@ import * as React from 'react';
 import { Button,Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { updateUser } from '../redux/actions/userAction';
-import {useHistory, useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 const UserUpdate = ({user , updateUser}) => {
     const {id} = useParams();
     const [name , setName] = React.useState(user.others.filter(item => item._id == id)[0].name);
     const [email , setEmail] = React.useState(user.others.filter(item => item._id == id)[0].email);
-    const history = useHistory();
+    const navigate = useNavigate();
     return (
         <div>
             <h2 className='text-center my-5'>Update User</h2>
@@ -22,7 +22,7 @@ const UserUpdate = ({user , updateUser}) => {
                     <Form.Control type="text" value={email} onChange = {(e) => setEmail(e.target.value)}/>
                 </Form.Group>
                 <div className='text-center'>
-                    <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault(); updateUser({id , name , email} , history) }}>
+                    <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault(); updateUser({id , name , email} , navigate) }}>
                         Update
                     </Button>
                 </div>

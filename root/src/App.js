@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 import  Header  from './components/NavBarAll'
 import Home from './components/Home'
@@ -24,33 +24,31 @@ import Preview from './components/Preview'
 function App() {
   return (
     <div className="App">
-      <Router>
         <Header />
         <Container>
           <Row>
             <Col md={12}>
               <div className="wrapper">
-                <Switch>
-                  {/* Landing page (public + private) */}
-                  <Route exact path="/" component={Home}/>
-                  {/* Profile page (private) */}
-                  <Route exact path="/profile" component={Profile}/>
+              <Routes>
+          {/* Landing page (public + private) */}
+          <Route exact path="/" element={<Home/>}/>
+          {/* Profile page (private) */}
+                  <Route exact path="/profile" element={<Profile/>}/>
                   {/* Signup/Login pages (public) */}
-                  <Route exact path="/register" component={Register}/>
-                  <Route exact path="/signin" component={Signin}/>
+                  <Route exact path="/register" element={<Register/>}/>
+                  <Route exact path="/signin" element={<Signin/>}/>
                     {/*Admin management page (user+books) (private)  */}
-                  <Route exact path="/manage" component={Manage} />
+                  <Route exact path="/manage" element={<Manage/>} />
                   
-                  <Route exact path="/update/:id" component={Update} />
-                  <Route exact path="/user_update/:id" component={UserUpdate}/>
-                  <Route exact path="/preview/:id" component={Preview}/>
-                  <Route exact path="/create" component={Create}/>
-                </Switch>
+                  <Route exact path="/update/:id" element={<Update/>} />
+                  <Route exact path="/user_update/:id" element={<UserUpdate/>}/>
+                  <Route exact path="/preview/:id" element={<Preview/>}/>
+                  <Route exact path="/create" element={<Create/>}/>
+                </Routes>
               </div>
             </Col>
           </Row>
         </Container>
-      </Router>
     </div>
   )
 }
