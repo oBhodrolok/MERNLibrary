@@ -11,7 +11,7 @@ const Create = ({book , createBook}) => {
     const history = useHistory();
     return (
         <div>
-            <h2 className='text-center my-5'>Create Book</h2>
+            <h2 className='text-center my-5'>Add a new book entry to the library</h2>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Title</Form.Label>
@@ -27,7 +27,7 @@ const Create = ({book , createBook}) => {
                 </Form.Group>
                 <div className='text-center'>
                     <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault();createBook({title , author , description} , history)}}>
-                        Create
+                    Add to Collection!
                     </Button>
                 </div>
             </Form>

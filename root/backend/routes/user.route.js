@@ -6,7 +6,9 @@ const bcrypt = require('bcryptjs');
 let User = require('../models/User');
 
 
-
+//@route:  GET http://localhost:4000/user/allOthers
+//@desc:   Get list of all regular members with records in collection (registered)
+//@access: 
 router.route('/allOthers').get((req , res , next) => {
   User.find({roll: 'normal'} , (err , others) => {
       if(err) throw err;
@@ -14,7 +16,9 @@ router.route('/allOthers').get((req , res , next) => {
   });
 });
 
-// CREATE Student
+//@route:  POST http://localhost:4000/user/register
+//@desc:   As an authenticated user, register self in library records to get account to sign in, get input from form in frontend, salt and hash password when storing
+//@access: PUBLIC
 router.route('/register').post((req , res , next) => {
     User.findOne({email: req.body.email} , (err , docs) => {
       if(err) throw err;
@@ -41,7 +45,9 @@ router.route('/register').post((req , res , next) => {
     })
 });
 
-
+//@route: POST http://localhost:4000/user/signin
+//@desc:   Login as a registered user, receive input data from form in frontend, notify if either email doesn't exist in collection or password doesn't match
+//@access: PUBLIC
 router.route('/signin').post((req , res , next) => {
     User.findOne({email: req.body.email} , (err , data) => {
         if(err) throw err;
@@ -59,6 +65,9 @@ router.route('/signin').post((req , res , next) => {
     });
 });
 
+//@route:  PUT http://localhost:4000/user/edit-profile
+//@desc:   As an user, edit their own existing user profile (update document in Users collection)
+//@access: PRIVATE
 router.route('/edit-profile').put((req , res , next) => {
     User.findOneAndUpdate({email: req.body.email} , {$set: req.body} , (err , data) => {
         if(err) throw err;
@@ -67,7 +76,9 @@ router.route('/edit-profile').put((req , res , next) => {
 });
 
 
-// Update User
+//@route:  PUT http://localhost:4000/user/update-user/:id
+//@desc:   As an admin, update an existing user from library records (update document in Users collection)
+//@access: PRIVATE
 router.route('/update-user/:id').put((req, res, next) => {
   User.findByIdAndUpdate(
     req.params.id,
@@ -85,7 +96,9 @@ router.route('/update-user/:id').put((req, res, next) => {
   )
 })
 
-// Delete User
+//@route:  DELETE http://localhost:4000/user/delete-user/:id
+//@desc:   As an admin, delete an existing user from library records (remove document from Users collection)
+//@access: PRIVATE 
 router.route('/delete-user/:id').delete((req, res, next) => {
   User.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
@@ -98,6 +111,9 @@ router.route('/delete-user/:id').delete((req, res, next) => {
   })
 })
 
+//@route: POST http://localhost:4000/user/add-fav
+//@desc:  Add an existing book (in library collection) to User's favorite list/array (in their collection)
+//@access: PRIVATE
 router.route('/add-fav').post((req, res, next) => {
   console.log(req.body)
   User.updateOne(
@@ -114,6 +130,9 @@ router.route('/add-fav').post((req, res, next) => {
   })
 })
 
+//@route: POST http://localhost:4000/user/delete-fav
+//@desc:  Remove an user's favorite book item from record
+//@access: PRIVATE
 router.route('/delete-fav').post((req, res, next) => {
   console.log(req.body)
   User.updateOne(

@@ -17,7 +17,8 @@ let UserSchema = new Schema({
   },
   roll: {
     type: String,
-    default: 'normal'
+    default: 'normal',
+    enum:['admin', 'normal']
   },
   favourites: {
     type: Array,
