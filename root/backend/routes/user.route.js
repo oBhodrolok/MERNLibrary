@@ -8,9 +8,9 @@ let User = require('../models/User');
 
 //@route:  GET http://localhost:4000/user/allOthers
 //@desc:   Get list of all regular members with records in collection (registered)
-//@access: 
+//@access: PUBLIC
 router.route('/allOthers').get((req , res , next) => {
-  User.find({roll: 'normal'} , (err , others) => {
+  User.find({role: 'normal'} , (err , others) => {
       if(err) throw err;
       res.status(200).json({others})
   });

@@ -18,7 +18,7 @@ const Profile = ({user , book , allBook}) => {
             <h2 className='text-center my-5'>My Profile</h2>
             <h4>name: {user.user.name}</h4>
             <h4>email: {user.user.email}</h4>
-            <h4>roll: {user.user.roll}</h4>
+            <h4>role: {user.user.role}</h4>
 
             <h4>My Favourites books:</h4>
             <p>

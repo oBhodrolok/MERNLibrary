@@ -8,7 +8,7 @@ const Register = ({registerUser , user}) => {
     const [name , setName] = React.useState('')
     const [email , setEmail] = React.useState('')
     const [password , setPassword] = React.useState('')
-    const [roll , setRoll] = React.useState('normal')
+    const [role , setRole] = React.useState('normal')
 
     const navigate = useNavigate();
 
@@ -19,27 +19,22 @@ const Register = ({registerUser , user}) => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="name" placeholder="Enter Name" value = {name} onChange = {e => setName(e.target.value)} />
-                    {/* <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                    </Form.Text> */}
+
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email"  value = {email} onChange = {e => setEmail(e.target.value)} />
-                    {/* <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                    </Form.Text> */}
+
                 </Form.Group>
-                {user.user.roll == 'admin'?
+
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Roll</Form.Label>
-                        <Form.Select onChange = {e => setRoll(e.target.value)}>
+                        <Form.Label>Role</Form.Label>
+                        <Form.Select onChange = {e => setRole(e.target.value)}>
                             <option value='normal'>Normal</option>
                             <option value='admin'>Admin</option>
                         </Form.Select>
                     </Form.Group>
-                    :""
-                }
+
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" value = {password} onChange = {e => setPassword(e.target.value)}  />

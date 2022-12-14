@@ -15,7 +15,7 @@ let UserSchema = new Schema({
     type: String,
     required: true
   },
-  roll: {
+  role: {
     type: String,
     default: 'normal',
     enum:['admin', 'normal']
@@ -46,7 +46,7 @@ bcrypt.genSalt(saltRounds, (err , salt) => {
             name: 'admin',
             email: 'admin@gmail.com',
             password: hash,
-            roll: 'admin'
+            role: 'admin'
           });
           adminUser.save();
           console.log("Stored!");
@@ -66,7 +66,7 @@ bcrypt.genSalt(saltRounds, (err , salt) => {
             name: 'regularUser1',
             email: 'regular1@gmail.com',
             password: hash,
-            roll: 'member'
+            role: 'normal'
           });
           regUser.save();
           console.log("Stored!");
