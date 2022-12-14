@@ -43,7 +43,13 @@ export default function(state = initialState , action){
             console.log(action.payload)
             return {
                 ...state,
-                books: state.books.map(item => item._id == action.payload.id?{...item , comments:[...item.comments ,{comment:action.payload.comment , email:action.payload.email} ]}:item)
+                books: state.books.map(item => item._id == action.payload.id ?
+                    {...item , comments:[...item.comments, 
+                        {comment:action.payload.comment, email:action.payload.email, postedDate:action.payload.postedDate} ]
+                    }
+                    :
+                    item
+                    )
             }
         // case DEL_COMMENT:
         //     console.log(action.payload.id)
