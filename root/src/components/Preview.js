@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { updateBook , addComment, allBook } from '../redux/actions/bookAction';
 import {useNavigate, useParams} from 'react-router-dom';
 
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+//https://stackoverflow.com/questions/7443142/how-do-i-format-dates-from-mongoose-in-node-js
+
 const Preview = ({book, user , updateBook , addComment , allBook}) => {
     const {id} = useParams();
     const [title , setTitle] = React.useState("");
@@ -69,7 +72,9 @@ const Preview = ({book, user , updateBook , addComment , allBook}) => {
                             <Form.Control type="text" value={myComment} onChange = {(e) => setMyComment(e.target.value)} disabled = {!user.isAuthenticated}/>
                         </Form.Group>
                         <div className='text-center'>
-                            <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault(); addComment({id , email:user.user.email , comment:myComment} , navigate) }} disabled = {!user.isAuthenticated}>
+                            <Button variant="primary" type="submit" onClick={(e) => {e.preventDefault(); 
+                                addComment({id , email:user.user.email , comment:myComment} , navigate) }} disabled = {!user.isAuthenticated}
+                                >
                                 Leave a Comment!
                             </Button>
                         </div>

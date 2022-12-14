@@ -51,16 +51,7 @@ export default function(state = initialState , action){
                     item
                     )
             }
-        // case DEL_COMMENT:
-        //     console.log(action.payload.id)
-        //     return {
-        //         ...state,
-        //         isLoading: false,
-        //         user: {
-        //             ...state.user,
-        //             favourites: state.user.favourites.filter(item => item != action.payload.id)
-        //         }
-        //     }
+
         default:
             return state
 
