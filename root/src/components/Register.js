@@ -10,6 +10,9 @@ const Register = ({registerUser , user}) => {
     const [password , setPassword] = React.useState('')
     const [role , setRole] = React.useState('normal')
 
+    //Very basic boolean flag to check if all input fields are blank/empty
+    const allFilled = ((name != "") && (email != "") && (password != ""));
+
     const navigate = useNavigate();
 
     return (
@@ -24,23 +27,14 @@ const Register = ({registerUser , user}) => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email"  value = {email} onChange = {e => setEmail(e.target.value)} />
-
                 </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Role</Form.Label>
-                        <Form.Select onChange = {e => setRole(e.target.value)}>
-                            <option value='normal'>Normal</option>
-                            <option value='admin'>Admin</option>
-                        </Form.Select>
-                    </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" value = {password} onChange = {e => setPassword(e.target.value)}  />
                 </Form.Group>
                 <div className='text-center'>
-                    <Button variant="primary" type="submit" onClick = {e => {e.preventDefault(); registerUser({name , email , password} , navigate)}}>
+                    <Button variant="primary" disabled={!allFilled} type="submit" onClick = {e => {e.preventDefault(); registerUser({name , email , password} , navigate)}}>
                         Submit
                     </Button>
                 </div>

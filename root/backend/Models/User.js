@@ -54,25 +54,6 @@ bcrypt.genSalt(saltRounds, (err , salt) => {
 
     }
   })
-
-  User.findOne({email: 'regular1@gmail.com'} , (err , docs) => {
-    if(err) throw err
-    if(!docs){
-      //Salt and hash password, store it in collection
-        bcrypt.hash('reg123' , salt , (err , hash) => {
-          if(err) throw err;
-          //Create a regular account 
-          const regUser = new User({
-            name: 'regularUser1',
-            email: 'regular1@gmail.com',
-            password: hash,
-            role: 'normal'
-          });
-          regUser.save();
-          console.log("Stored!");
-        })
-    }
-  })
 })
 
 
