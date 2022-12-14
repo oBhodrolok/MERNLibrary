@@ -14,8 +14,8 @@ import Register from './components/Register'
 import Profile from './components/Profile'
 import Update from './components/UpdateBook'
 import Create from './components/CreateBook'
-import Manage from './components/Manage'
-import UserUpdate from './components/UserUpdate'
+import Manage from './components/AdminManage'
+import UserUpdate from './components/UpdateUser'
 import Preview from './components/Preview'
 
 

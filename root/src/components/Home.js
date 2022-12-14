@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Col, Container, FormControl, Row , Table } from 'react-bootstrap';
-import {Bucket , BucketFill} from 'react-bootstrap-icons'
+// import {Bucket , BucketFill} from 'react-bootstrap-icons'
 import { connect } from 'react-redux';
 import {allBook, deleteBook} from '../redux/actions/bookAction'
 import {useNavigate} from 'react-router-dom';
@@ -17,8 +17,9 @@ const Home = ({
 }) => {
     const navigate = useNavigate();
 
-    const [searchStr , setSearchStr] = React.useState('');
-    const [_books , setBooks] = React.useState(book.books);
+    const [searchStr, setSearchStr] = React.useState('');
+    const [_books, setBooks] = React.useState(book.books);
+
     React.useEffect(() => {
         allBook();
     } , [])
@@ -26,6 +27,7 @@ const Home = ({
     React.useEffect(() => {
         setBooks(book.books);
     } , [book.books]);
+
     return (
         <Container style = {{marginTop: '10px'}}className = 'text-center'>
             <h1 className = 'text-centertext-secondary'>List of books available in the library!</h1>

@@ -5,7 +5,7 @@ let bodyParser = require('body-parser');
 const createError = require('http-errors');
 
 
-// Express Route
+//Express Routes
 const UserRoute = require('../backend/routes/user.route');
 const BookRoute = require('../backend/routes/book.route');
 //Inspiration: https://www.section.io/engineering-education/nodejs-mongoosejs-mongodb/
