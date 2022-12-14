@@ -52,7 +52,11 @@ const Home = ({
                     <th>#</th>
                     <th>Title</th>
                     <th>Author</th>
+                    {user.isAuthenticated ? 
                     <th style={{width:'auto'}}>Description</th>
+                    :
+                    ""
+                    }
                     <th style={{width:'9em', justifyContent:'center'}}>Preview</th>
                     <th>Action</th>
                     </tr>
@@ -68,13 +72,18 @@ const Home = ({
                             <td>
                                 {item.author}
                             </td>
+                            {user.isAuthenticated ? 
                             <td>
                                 {item.description}
                             </td>
+                            :
+                            ""
+                            }
 
                             <td style={{paddingTop:'19px'}}>
                                 <Button className = 'btn-primary text-white' onClick = {() => navigate(`/preview/${item._id}`)}>View book</Button>
                             </td>
+
 
                             <td style={{paddingTop:'19px'}}>
                                 {

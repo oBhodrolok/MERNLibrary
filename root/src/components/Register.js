@@ -5,11 +5,12 @@ import {registerUser} from '../redux/actions/userAction';
 import {useNavigate} from 'react-router-dom';
 
 const Register = ({registerUser , user}) => {
-    const [name , setName] = React.useState('')
-    const [email , setEmail] = React.useState('')
-    const [password , setPassword] = React.useState('')
-    const [role , setRole] = React.useState('normal')
+    const [name , setName] = React.useState('');
+    const [email , setEmail] = React.useState('');
+    const [password , setPassword] = React.useState('');
+    const [role , setRole] = React.useState('normal');
 
+    
     //Very basic boolean flag to check if all input fields are blank/empty
     const allFilled = ((name != "") && (email != "") && (password != ""));
 
