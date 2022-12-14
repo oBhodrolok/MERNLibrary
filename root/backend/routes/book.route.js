@@ -5,7 +5,9 @@ let mongoose = require('mongoose'),
 // Book Model
 let Book = require('../models/Book');
 
-// CREATE Book
+//@route:  POST http://localhost:4000/book/create-book
+//@desc:   As an admin, create a new book entry and add it to library collection
+//@access: PRIVATE
 router.route('/create-book').post((req, res, next) => {
   Book.create(req.body, (error, data) => {
     if (error) {
@@ -16,7 +18,9 @@ router.route('/create-book').post((req, res, next) => {
   })
 })
 
-// READ Books
+//@route:  GET http://localhost:4000/book/
+//@desc:   Get list of all available books in library collection 
+//@access: PUBLIC
 router.route('/').get((req, res) => {
   Book.find((error, data) => {
     if (error) {
@@ -27,8 +31,10 @@ router.route('/').get((req, res) => {
   })
 })
 
-// Get Single Book
-router.route('/edit-book/:id').get((req, res) => {
+//@route:  GET http://localhost:4000/book/edit-book/:id
+//@desc:   As an admin, get the details of a existing book
+//@access: PRIVATE
+router.route('/get-book/:id').get((req, res) => {
   Book.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)
@@ -38,7 +44,9 @@ router.route('/edit-book/:id').get((req, res) => {
   })
 })
 
-// Update Book
+//@route:  PUT http://localhost:4000/book/update-book/:id
+//@desc:   As an admin, edit the details of a existing book and update it's collection document
+//@access: PRIVATE
 router.route('/update-book/:id').put((req, res, next) => {
   Book.findByIdAndUpdate(
     req.params.id,
@@ -57,7 +65,9 @@ router.route('/update-book/:id').put((req, res, next) => {
   )
 })
 
-// Delete Book
+//@route:  DELETE http://localhost:4000/book/delete-book/:id
+//@desc:   As an admin, delete an existing book from library collection
+//@access: PRIVATE
 router.route('/delete-book/:id').delete((req, res, next) => {
   Book.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
@@ -70,7 +80,9 @@ router.route('/delete-book/:id').delete((req, res, next) => {
   })
 })
 
-
+//@route:  POST http://localhost:4000/book/add-comment
+//@desc:   As an authenticated registered user(admin or member), add a comment in a book's page (stored in book's document)
+//@access: PRIVATE
 router.route('/add-comment').post((req, res, next) => {
   console.log(req.body)
   Book.updateOne(
@@ -86,4 +98,5 @@ router.route('/add-comment').post((req, res, next) => {
     }
   })
 })
+
 module.exports = router

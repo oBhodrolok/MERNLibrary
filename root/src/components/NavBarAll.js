@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import {Navbar , Container , Nav, NavDropdown} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
@@ -9,8 +8,14 @@ import {useNavigate} from 'react-router-dom';
 //https://react-bootstrap.github.io/components/navbar/ + https://stackoverflow.com/a/72184830
 
 const Header = ({user , logoutUser}) => {
+  
   const navigate = useNavigate();
-    return (
+  const userRole = user.user.role;
+  const userName = user.user.name;
+  console.log('User role is ' + userRole);
+  console.log('User name is ' + userName);
+  
+  return (
         <header className="App-header">
           <Navbar variant="dark" collapseOnSelect expand='sm' style={{backgroundColor:'#a28089'}}>
             <Container fluid>
@@ -62,15 +67,14 @@ const Header = ({user , logoutUser}) => {
                     </Link>
                   </Nav>
                   {/* If user is an admin, they can see some other navigation links too! */}
-                  {user.user.roll == 'admin'?
+                  {user.user.role === 'admin'?
                     <Nav>
                       <Link to={'/manage'} className="nav-link">
                         Management
                       </Link>
                     </Nav>:
                     ""
-                    //If not, no other links
-                  }
+              }
                 </Nav>
               }
               </Navbar.Collapse>
