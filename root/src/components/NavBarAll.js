@@ -10,10 +10,10 @@ import {useNavigate} from 'react-router-dom';
 const Header = ({user , logoutUser}) => {
   
   const navigate = useNavigate();
-  const userRole = user.user.role;
-  const userName = user.user.name;
-  console.log('User role is ' + userRole);
-  console.log('User name is ' + userName);
+  // const userRole = user.user.role;
+  // const userName = user.user.name;
+  // console.log('User role is ' + userRole);
+  // console.log('User name is ' + userName);
   
   return (
         <header className="App-header">

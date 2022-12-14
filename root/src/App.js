@@ -15,6 +15,7 @@ import Profile from './components/Profile'
 import Update from './components/UpdateBook'
 import Create from './components/CreateBook'
 import Manage from './components/AdminManage'
+import CreateUser from './components/CreateUser'
 import UserUpdate from './components/UpdateUser'
 import Preview from './components/Preview'
 
@@ -41,7 +42,8 @@ function App() {
                   <Route exact path="/update/:id" element={<Update/>} />
                   <Route exact path="/user_update/:id" element={<UserUpdate/>}/>
                   <Route exact path="/preview/:id" element={<Preview/>}/>
-                  <Route exact path="/create" element={<Create/>}/>
+                  <Route exact path="/create-book" element={<Create/>}/>
+                  <Route exact path="/create-user" element={<CreateUser/>}/>
                 </Routes>
               </div>
             </Col>

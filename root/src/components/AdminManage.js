@@ -19,7 +19,7 @@ const Manage = ({
             <Col md ={6}>
                 <h4 className='text-primary text-center'>User Management</h4>
                 <div className = 'text-end my-3'>
-                    <Button className='btn-success' disabled>NEW USER</Button>
+                    <Button className='btn-success' onClick={() => navigate('/create-user')}>Add new user</Button>
                 </div>
                 <Table striped bordered hover>
                     <thead className='text-center'>
@@ -48,7 +48,7 @@ const Manage = ({
             <Col md ={6}>
                 <h4 className='text-warning text-center'>Book Management</h4>
                 <div className = 'text-end my-3'>
-                    <Button className='btn-success' onClick={() => navigate('/create')}>NEW BOOK</Button>
+                    <Button className='btn-success' onClick={() => navigate('/create-book')}>Add new book</Button>
                 </div>
                 <Table striped bordered hover>
                     <thead className='text-center'>
@@ -56,7 +56,7 @@ const Manage = ({
                         <th>#</th>
                         <th>Title</th>
                         <th>Author</th>
-                        <th>Action</th>
+                        <th style={{width: '150px'}}>Action</th>
                         </tr>
                     </thead>
                     <tbody className='text-center'>
