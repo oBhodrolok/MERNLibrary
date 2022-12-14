@@ -22,6 +22,10 @@ let BookSchema = new Schema({
     comment: {
       type: String,
       required: true
+    },
+    postedDate: {
+      type: Date, 
+      default: Date.now
     }
   }]
 })

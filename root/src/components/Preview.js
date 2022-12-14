@@ -24,7 +24,8 @@ const Preview = ({book, user , updateBook , addComment , allBook}) => {
                 setDescription(book.books.filter(item => item._id == id)[0].description);
                 setComments(book.books.filter(item => item._id == id)[0].comments);
         }
-    } , [book])
+    } , [book]);
+
     return (
         <div>
             <h2 className='text-center my-5'>Preview</h2>
@@ -46,7 +47,10 @@ const Preview = ({book, user , updateBook , addComment , allBook}) => {
                     {
                         comments.length>0 &&comments.map((item , index) =>{
                             return (
-                                <Form.Control type="text" value={item.email +" -------->  "+ item.comment} onChange = {(e) => setDescription(e.target.value)}  disabled/>
+                                <Form.Control type="text" 
+                                value={item.email + " said: "+ item.comment} 
+                                disabled 
+                                />
                             )
                         })
                     }

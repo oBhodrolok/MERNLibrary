@@ -69,11 +69,10 @@ export const deleteBook = (data , navigate) => dispatch => {
 //As loggedin user, make upto 1 comment under a book's profile/preview page
 export const addComment = (data , navigate) => dispatch => {
     dispatch({type:CLEAR_ERROR});
-    axios.post(`http://localhost:4000/book/add-comment` , {...data})
+    axios.post(`http://localhost:4000/book/add-comment`, {...data})
     .then(res => {
         console.log(data)
             dispatch({type: ADD_COMMENT , payload: data})
-
         })
         .catch(err => {
             dispatch({type:SET_ERROR , payload: err.response.data})

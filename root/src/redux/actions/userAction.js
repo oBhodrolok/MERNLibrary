@@ -30,7 +30,6 @@ export const registerUser = (data , navigate) => dispatch => {
     axios.post('http://localhost:4000/user/register' , {...data})
         .then(res => {
             navigate('/signin');
-            // }
         })
         .catch(err => {
             dispatch({type: SET_ERROR , payload: err.response.data})
@@ -51,8 +50,6 @@ export const allOthers = () => dispatch => {
 
 
 export const logoutUser = (navigate) => dispatch => {
-    // axios.post('http://localhost:4000/user/register' , {...data})
-    //     .then(res => {
             window.localStorage.removeItem('isAuthenticated')
             window.localStorage.removeItem('_id')
             window.localStorage.removeItem('name')
@@ -62,9 +59,6 @@ export const logoutUser = (navigate) => dispatch => {
             window.localStorage.removeItem('favourites')
             dispatch({type: LOGOUT})
             navigate.push('/signin');
-            // }
-        // })
-        // .catch(err => console.log(err));
 }
 
 
@@ -74,7 +68,6 @@ export const updateUser = (data , navigate) => dispatch => {
         .then(res => {
             dispatch({type: UPDATE_USER , payload: res.data})
             navigate.push('/manage');
-            // }
         })
         .catch(err => {
             dispatch({type:SET_ERROR , payload: err.response.data})
@@ -98,7 +91,6 @@ export const addFav = (data , navigate) => dispatch => {
     axios.post(`http://localhost:4000/user/add-fav` , {...data})
     .then(res => {
             dispatch({type: ADD_FAV , payload: data})
-            // navigate.push('/manage');
         })
         .catch(err => {
             dispatch({type:SET_ERROR , payload: err.response.data})
@@ -109,7 +101,6 @@ export const delFav = (data , navigate) => dispatch => {
     axios.post(`http://localhost:4000/user/delete-fav` , {...data})
     .then(res => {
             dispatch({type: DELETE_FAV , payload: data})
-            // navigate.push('/manage');
         })
         .catch(err => {
             dispatch({type:SET_ERROR , payload: err.response.data})
