@@ -5,17 +5,21 @@ Capstone project for SENG 513 Fall 2022.
 
 # Usage
 
+- Ensure that Node.js is installed locally. https://nodejs.org/en/download/
+- For running the web application, two separate terminals are needed to run concurrently.
+
 ## Backend
 
-- Navigate to `backend` folder (from root).
-- Run `npm install` to install required packages (outlined in package.json).
-- Open terminal run `nodemon`, this will start the server.
+- At the first terminal, navigate to `backend` folder (from root directory).
+- Run `npm install` to install the required package dependecies (outlined in [package.json](https://github.com/oBhodrolok/MERNLibrary/blob/main/root/backend/package.json ).
+- Run `nodemon`, this will start the backend server (at port 4000 and also establish MongoDB cluster connection).
 
 ## Frontend
 
-- Navigate to `root` directory.
-- Run `npm install`
-- Run `npm start`, this will run the client side at port 3000
+- At the second terminal, navigate to `root` directory if not already in it.
+- Run `npm install`to install the required package dependencies (outlined in [package.json](https://github.com/oBhodrolok/MERNLibrary/blob/main/root/package.json)).
+- Run `npm start`, this will run the client side at port 3000 (should automatically open http://localhost:300 at the system's default Web browser.
+
 
 # Contributors
 
