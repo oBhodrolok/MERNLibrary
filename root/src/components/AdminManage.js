@@ -28,7 +28,7 @@ const Manage = ({
                         <th>#</th>
                         <th>User Name</th>
                         <th>User Email</th>
-                        <th>Action</th>
+                        <th style={{width: '150px'}}>Action</th>
                         </tr>
                     </thead>
                     <tbody className='text-center'>

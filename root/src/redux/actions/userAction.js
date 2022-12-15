@@ -58,7 +58,7 @@ export const logoutUser = (navigate) => dispatch => {
             window.localStorage.removeItem('roll')
             window.localStorage.removeItem('favourites')
             dispatch({type: LOGOUT})
-            navigate.push('/signin');
+            navigate('/signin');
 }
 
 
@@ -67,7 +67,7 @@ export const updateUser = (data , navigate) => dispatch => {
     axios.put(`http://localhost:4000/user/update-user/${data.id}` , {...data})
         .then(res => {
             dispatch({type: UPDATE_USER , payload: res.data})
-            navigate.push('/manage');
+            navigate('/manage');
         })
         .catch(err => {
             dispatch({type:SET_ERROR , payload: err.response.data})

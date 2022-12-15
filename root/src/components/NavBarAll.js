@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {logoutUser} from '../redux/actions/userAction';
 import {connect} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
+import webAppLogo from '../images/webAppLogo.png';
 
 //https://react-bootstrap.github.io/components/navbar/ + https://stackoverflow.com/a/72184830
 
@@ -19,6 +20,7 @@ const Header = ({user , logoutUser}) => {
         <header className="App-header">
           <Navbar variant="dark" collapseOnSelect expand='sm' style={{backgroundColor:'#a28089'}}>
             <Container fluid>
+            <Nav><img src={webAppLogo} style={{width:'83px', height:'83px', maxWidth:'12rem', maxHeight:'12rem', justifyContent:'center', margin:'auto', display:'block'}} /></Nav>
               <Navbar.Brand style={{marginBottom: '5x', fontFamily: 'verdana, sans serif', paddingRight:'20px', paddingLeft:'4px', fontSize:'x-large'}}>E-Library
                 <Link to = '/'  className="nav-link">
                   Home
@@ -39,7 +41,10 @@ const Header = ({user , logoutUser}) => {
               <Link to={'/signin'} className="nav-link">About Us</Link> 
                 </NavDropdown.Item>
             </NavDropdown> */}
+            
+
             <Nav className='me-auto'></Nav>
+            
               {
               //Some links should be shown based on user's authentication status 
               !user.isAuthenticated ?

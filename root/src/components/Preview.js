@@ -52,7 +52,7 @@ const Preview = ({book, user , updateBook , addComment , allBook}) => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Description</Form.Label>
-                    <Form.Control type="text" value={description}  disabled/>
+                    <p style={{ background:'#e9ecef', opacity:'1'}}>{description}</p>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Comments on this book:</Form.Label>
