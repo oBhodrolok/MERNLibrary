@@ -14,6 +14,8 @@ const Preview = ({book, user , updateBook , addComment , allBook}) => {
     const [description , setDescription] = React.useState("");
     const [comments , setComments] = React.useState("");
     const [myComment , setMyComment] = React.useState("");
+    const [imageURL, setimageURL] = React.useState("");
+
     const navigate = useNavigate();
 
     React.useEffect(() => {
@@ -26,13 +28,19 @@ const Preview = ({book, user , updateBook , addComment , allBook}) => {
                 setAuthor(book.books.filter(item => item._id == id)[0].author);
                 setDescription(book.books.filter(item => item._id == id)[0].description);
                 setComments(book.books.filter(item => item._id == id)[0].comments);
+                setimageURL(book.books.filter(item=>item._id==id)[0].imageURL);
         }
     } , [book]);
+    const url = 'https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png';
+    //const url2 = book.book.imageURL;
+    const url3 = imageURL;
     
 
     return (
         <div>
+            
             <h2 className='text-center my-5'>Preview</h2>
+            <img src={url} style={{width:'10rem', height:'10rem', maxWidth:'12rem', maxHeight:'12rem', justifyContent:'center', margin:'auto', display:'block'}}/>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Title</Form.Label>

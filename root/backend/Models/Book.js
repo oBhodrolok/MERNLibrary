@@ -14,6 +14,9 @@ let BookSchema = new Schema({
     type: String,
     required: true
   },
+  imageURL:{
+    type: String,
+  },
   comments:[{
     email: {
       type: String,

@@ -31,7 +31,7 @@ const Home = ({
     return (
         <Container style = {{marginTop: '10px'}}className = 'text-center'>
             <h1 className = 'text-centertext-secondary'>List of books available in the library!</h1>
-            <FormControl type = 'text' style = {{width: '90vh',borderRadius: '15px', fontSize:'larger'}} className = 'border border-primary mt-4 mx-auto' value={searchStr}
+            <FormControl type = 'text' style = {{maxWidth:'90vh',borderRadius: '15px', fontSize:'larger'}} className = 'border border-primary mt-4 mx-auto' value={searchStr}
                 onChange = {e => setSearchStr(e.target.value)}
             />
             {/* Search button to filter and show only input-matching books */}
@@ -46,21 +46,24 @@ const Home = ({
              }}>Search</Button>
 
              {/* List(table actually) of books */}
+             {/* <div style={{maxWidth: '90%', overflowX: 'scroll', margin: 'auto'}}> */}
+            <div style={{overflow:'scroll', maxWidth: '90%',maxHeight:'28rem' ,margin:'auto'}}> 
              <Table striped bordered hover className='mt-4'>
                 <thead>
                     <tr>
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    {user.isAuthenticated ? 
+                    <th style={{width:'27rem'}}>Title</th>
+                    <th style={{width:'9rem'}}>Author</th>
+                    {/* {user.isAuthenticated ? 
                     <th style={{width:'auto'}}>Description</th>
                     :
                     ""
-                    }
+                    } */}
                     <th style={{width:'9em', justifyContent:'center'}}>Preview</th>
                     <th>Action</th>
                     </tr>
                 </thead>
+                {/* <div style={{overflow:'scroll', maxWidth: '100%',maxHeight:'28rem' ,margin:'auto'}}> */}
                 <tbody>
                     {_books.map((item , index) => (
                         <tr>
@@ -72,13 +75,13 @@ const Home = ({
                             <td>
                                 {item.author}
                             </td>
-                            {user.isAuthenticated ? 
-                            <td>
-                                {item.description}
-                            </td>
+                            {/* {user.isAuthenticated ? 
+                            // <td>
+                            //     {item.description}
+                            // </td>
                             :
                             ""
-                            }
+                            } */}
 
                             <td style={{paddingTop:'19px'}}>
                                 <Button className = 'btn-primary text-white' onClick = {() => navigate(`/preview/${item._id}`)}>View book</Button>
@@ -107,7 +110,9 @@ const Home = ({
                         </tr>
                     ))}
                 </tbody>
+                {/* </div> */}
             </Table>
+            </div>
         </Container>
     );
 }

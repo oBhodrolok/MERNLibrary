@@ -21,6 +21,7 @@ const Manage = ({
                 <div className = 'text-end my-3'>
                     <Button className='btn-success' onClick={() => navigate('/create-user')}>Add new user</Button>
                 </div>
+                <div style={{overflow:'scroll', maxWidth: '100%',maxHeight:'30rem' ,margin:'auto'}}>
                 <Table striped bordered hover>
                     <thead className='text-center'>
                         <tr>
@@ -44,12 +45,16 @@ const Manage = ({
                         ))}
                     </tbody>
                 </Table>
+                </div>
             </Col>
+            
+            
             <Col md ={6}>
                 <h4 className='text-warning text-center'>Book Management</h4>
                 <div className = 'text-end my-3'>
                     <Button className='btn-success' onClick={() => navigate('/create-book')}>Add new book</Button>
                 </div>
+                <div style={{overflow:'scroll', maxWidth: '100%',maxHeight:'30rem', margin:'auto'}}>
                 <Table striped bordered hover>
                     <thead className='text-center'>
                         <tr>
@@ -73,6 +78,7 @@ const Manage = ({
                         ))}
                     </tbody>
                 </Table>
+                </div>
             </Col>
         </Row>
     )

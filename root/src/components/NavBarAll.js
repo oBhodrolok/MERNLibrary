@@ -19,13 +19,14 @@ const Header = ({user , logoutUser}) => {
         <header className="App-header">
           <Navbar variant="dark" collapseOnSelect expand='sm' style={{backgroundColor:'#a28089'}}>
             <Container fluid>
-              <Navbar.Brand style={{marginBottom: '5x', fontFamily: 'verdana, sans serif', paddingRight:'20px', paddingLeft:'4px'}}>MERNLibrary
+              <Navbar.Brand style={{marginBottom: '5x', fontFamily: 'verdana, sans serif', paddingRight:'20px', paddingLeft:'4px', fontSize:'x-large'}}>E-Library
                 <Link to = '/'  className="nav-link">
                   Home
                   </Link>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav" className='mx-auto' style={{paddingTop: '32px'}}>
+               <Navbar.Collapse id="basic-navbar-nav" className='mx-auto' style={{paddingTop: '32px'}}>
+                {/*}
                 <NavDropdown title="Quick Links" id="basic-nav-dropdown" className='mx-left'style={{color:'white', fontSize:'large'}}>
               <NavDropdown.Item >
                 <Link to={'/signin'} className="nav-link">Membership</Link>              
@@ -37,7 +38,7 @@ const Header = ({user , logoutUser}) => {
               <NavDropdown.Item>
               <Link to={'/signin'} className="nav-link">About Us</Link> 
                 </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
             <Nav className='me-auto'></Nav>
               {
               //Some links should be shown based on user's authentication status 
@@ -77,7 +78,7 @@ const Header = ({user , logoutUser}) => {
               }
                 </Nav>
               }
-              </Navbar.Collapse>
+               </Navbar.Collapse>
             </Container>
           </Navbar>
         </header>

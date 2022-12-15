@@ -10,7 +10,7 @@ const UserRoute = require('../backend/routes/user.route');
 const BookRoute = require('../backend/routes/book.route');
 //Inspiration: https://www.section.io/engineering-education/nodejs-mongoosejs-mongodb/
 const LocalMongoURI = 'mongodb://127.0.0.1:27017/mydatabase';
-const AtlasURI      = 'mongodb+srv://adminAll:FyJwRDDykhRfxcse@librarycluster.vgreoc9.mongodb.net/testLibraryDBv4';
+const AtlasURI      = 'mongodb+srv://adminAll:FyJwRDDykhRfxcse@librarycluster.vgreoc9.mongodb.net/testLibraryDBv5';
 //Both databases are the same
 
 // Connecting mongoDB Database (https://mongoosejs.com/docs/connections.html)
